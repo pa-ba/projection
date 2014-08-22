@@ -10,6 +10,21 @@
 {-# LANGUAGE TypeOperators         #-}
 {-# LANGUAGE UndecidableInstances  #-}
 
+--------------------------------------------------------------------------------
+-- |
+-- Module      :  Data.Projection
+-- Copyright   :  (c) 2014 Patrick Bahr
+-- License     :  BSD3
+-- Maintainer  :  Patrick Bahr <paba@di.ku.dk>
+-- Stability   :  experimental
+-- Portability :  non-portable (GHC Extensions)
+--
+-- This module provides a generic projection function 'pr' for
+-- arbitrary nested binary products.
+--
+--------------------------------------------------------------------------------
+
+
 module Data.Projection (pr, (:<)) where
 
 import Prelude hiding (Either (..))
@@ -53,7 +68,15 @@ pr' Phere e = e
 pr' (Pleft p) (x,_) = pr' p x
 pr' (Pright p) (_,y) = pr' p y
 
+
+-- | The constraint @e :< p@ expresses that @e@ is a component of the
+-- type @p@. That is, @p@ is formed by binary products using the type
+-- @e@. The occurrence of @e@ must be unique. For example we have @Int
+-- :< (Bool,(Int,Bool))@ but not @Bool :< (Bool,(Int,Bool))@.
 type (e :< p) = GetPointer (Elem e p) e p
+
+-- | This function projects the component of type @e@ out or the
+-- compound value of type @p@.
 
 pr :: forall e p . (e :< p) => p -> e
 pr p = pr' (pointer :: Pointer (Elem e p) e p) p
