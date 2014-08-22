@@ -4,8 +4,8 @@ Synopsis:            	Projection function for arbitrarily nested binary product 
 Description:
   This package implements a projection function for arbitrarily nested
   binary product types. The implementation is based on closed type
-  families and follows the approach described in the paper /Composing
-  and Decomposing Data Types/ (Workshop on Generic Programming, 2014,
+  families and follows the approach described in the paper 
+  /Composing and Decomposing Data Types/ (Workshop on Generic Programming, 2014,
   to appear).
 
 
