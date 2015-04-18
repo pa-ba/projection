@@ -21,7 +21,6 @@ bug-reports:            https://github.com/pa-ba/projection/issues
 
 library
   Exposed-Modules:      Data.Projection
-                        Data.Projection.Internal
   Build-Depends:	base >= 4.7, base < 5
   hs-source-dirs:	src
   ghc-options:          -W
